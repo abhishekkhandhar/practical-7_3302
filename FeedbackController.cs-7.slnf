@@ -1,8 +1,21 @@
+using System.Web.Mvc;
+using FeedbackManagementMVC.Models;
+namespace FeedbackManagementMVC.Controllers
 {
-  "solution": {
-    "path": "..\\source\\repos\\practical-7\\practical-7.slnx",
-    "projects": [
-      "practical-7\\practical-7.csproj"
-    ]
-  }
-}
+    public class FeedbackController : Controller
+    {
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Submitted", feedback);
+            }
+        }
+    }
